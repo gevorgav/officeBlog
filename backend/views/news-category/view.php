@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'slug',
-            'title_en',
-            'parent.title_en',
+            'title_hy',
+            'parent.title_hy',
             'status',
         ],
     ]) ?>

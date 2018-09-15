@@ -1,13 +1,13 @@
 <?php
 
 use common\grid\EnumColumn;
-use common\models\NewsCategory;
+use common\models\OfficialMessageCategory;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\NewsSearch */
+/* @var $searchModel backend\models\search\OfficialMessageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('backend', 'Official Message');
@@ -32,13 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'slug',
-            'title_en',
+            'title_hy',
             [
                 'attribute' => 'category_id',
                 'value' => function ($model) {
-                    return $model->category ? $model->category->title_en : null;
+                    return $model->category ? $model->category->title_hy : null;
                 },
-                'filter' => ArrayHelper::map(NewsCategory::find()->all(), 'id', 'title_hy')
+                'filter' => ArrayHelper::map(OfficialMessageCategory::find()->all(), 'id', 'title_hy')
             ],
             [
                 'attribute' => 'created_by',

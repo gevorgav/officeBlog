@@ -19,7 +19,7 @@ class SliderSearch extends Slider
     {
         return [
             [['id', 'created_at', 'updated_at'], 'integer'],
-            [[ 'title_en'], 'safe'],
+            [[ 'title_hy'], 'safe'],
         ];
     }
 
@@ -54,7 +54,7 @@ class SliderSearch extends Slider
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title_en', $this->title_en]);
+        $query->andFilterWhere(['like', 'title_hy', $this->title_hy]);
 
         return $dataProvider;
     }

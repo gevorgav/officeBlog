@@ -22,7 +22,7 @@ class OfficialMessageCategorySearch extends OfficialMessageCategory
     {
         return [
             [['id', 'status'], 'integer'],
-            [['slug', 'title_en'], 'safe'],
+            [['slug', 'title_hy'], 'safe'],
         ];
     }
 
@@ -57,7 +57,7 @@ class OfficialMessageCategorySearch extends OfficialMessageCategory
         ]);
 
         $query->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'title_en', $this->title_en]);
+            ->andFilterWhere(['like', 'title_hy', $this->title_hy]);
 
         return $dataProvider;
     }

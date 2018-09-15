@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 
             'id',
-            'title_en',
+            'title_hy',
             'created_at:datetime',
             'updated_at',
 

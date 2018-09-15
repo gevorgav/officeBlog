@@ -44,7 +44,7 @@ use pudinglabs\tagsinput\TagsinputWidget;
             <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
                 $categories,
                 'id',
-                'title_en'
+                'title_hy'
             ), ['prompt' => '']) ?>
         </div>
     </div>

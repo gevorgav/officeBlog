@@ -155,13 +155,8 @@ $config = [
         'robotEmail' => env('ROBOT_EMAIL'),
         'availableLocales'=>[
             'hy'=>'ՀԱՅ',
-            'en'=>'Eng',
             'ru'=>'Рус',
-            'de'=>'DEU',
-            'fr'=>'FRA',
-            'es' => 'ESP',
-            'ar' => 'العربية',
-            'fa' => 'IRN',
+            'en'=>'Eng',
         ],
     ],
 ];

@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\Event;
+use common\models\OfficialMessage;
 use frontend\models\search\GeneralSearch;
 use Yii;
 use frontend\models\ContactForm;
@@ -51,78 +52,21 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        //Events Section
-        $upcoming = Event::find()
+        $newsList = News::find()
             ->published()
-            ->andWhere(['>', '{{%event}}.event_date_time',time()] )
-            ->orderBy('{{%event}}.event_date_time')
+            ->orderBy(['{{%news}}.published_at' => SORT_DESC])
+            ->limit(3)
+            ->all();
+        $officialMessages = OfficialMessage::find()
+            ->published()
+            ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
             ->limit(3)
             ->all();
 
-        //Article Regions
-        $categoryModelPYT = ArticleCategory::find()->andWhere(['slug' => 'plan-your-trip'])->one();
-        $query = Article::find()->where(['category_id' => $categoryModelPYT->id]);
-        $providerPYT = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => [
-                'defaultOrder' => ['created_at' => SORT_ASC]
-            ],
-        ]);
-
-        //Article Sights
-        $categoryModelSights = ArticleCategory::find()->andWhere(['slug' => 'sights'])->one();
-        $query = Article::find()->where(['category_id' => $categoryModelSights->id]);
-        $providerSights = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => ['created_at' => SORT_ASC]
-            ],
-        ]);
-        //Article Travel Routes
-        $categoryModelRoutes = ArticleCategory::find()->andWhere(['slug' => 'travel-routes'])->one();
-        $query = Article::find()->where(['category_id' => $categoryModelRoutes->id]);
-        $providerRoutes = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => ['created_at' => SORT_ASC]
-            ],
-        ]);
-
-        //Article Regions
-        $categoryModelRegions = ArticleCategory::find()->andWhere(['slug' => 'regions'])->one();
-        $query = Article::find()->where(['category_id' => $categoryModelRegions->id]);
-        $providerRegions = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => [
-                'defaultOrder' => ['created_at' => SORT_ASC]
-            ],
-        ]);
-
-        //Slider
-        $sliders = Slider::find()->all();
-
-        //Home page configs
-        $configs = HomePageConfigs::find()->one();
-
-        //Find Latest official-message by config
-        $news = News::find()->where(['slug' => $configs->latest_news_slug])->one();
-        if (!$news){
-            $configs->show_latest_news = 0;
-        }
-
         return $this->render('index', [
-            'sliders' => $sliders,
-            'sights' => $providerSights,
-            'routes' => $providerRoutes,
-            'regions' => $providerRegions,
-            'dataProviderPYT' => $providerPYT,
-            'categoryPYT' => $categoryModelPYT,
-            'configs' => $configs,
-            'official-message' => $news,
-            'upcoming'=>$upcoming]);
+            'newsList' => $newsList,
+            'officialMessages' => $officialMessages,
+        ]);
     }
 
     public function actionContact()

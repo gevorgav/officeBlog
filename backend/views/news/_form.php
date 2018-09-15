@@ -1,4 +1,3 @@
-
 <?php
 use trntv\filekit\widget\Upload;
 use trntv\yii\datetime\DateTimeWidget;
@@ -84,7 +83,7 @@ use yii\web\View;
             $form->field($model, 'tags')->widget(TagsinputWidget::classname(), [
                 'options' => [],
                 'clientOptions' => [],
-                'clientNews' => []
+                'clientEvents' => []
             ]);
             ?>
         </div>
@@ -93,29 +92,23 @@ use yii\web\View;
     <div class="row">
         <div class="col-md-4">
             <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
-                    $categories,
-                    'id',
-                    'title_en'
-                ), ['prompt'=>'']) ?>
+                $categories,
+                'id',
+                'title_hy'
+            ), ['prompt' => '']) ?>
         </div>
     </div>
-
-    <div class="col-md-12 col-sm-12 com-xs-12">
-        <div id="map" style="    width: 100%;
-    height: 400px;">
-        </div>
-    </div>
-<div class="clear"></div>
+    <div class="clear"></div>
     <div>
         <h3 style="margin-top: 36px;">Multilingual inputs</h3>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#menu2">Հայերեն</a></li>
-            <li ><a data-toggle="tab" href="#home">English</a></li>
+            <li><a data-toggle="tab" href="#home">English</a></li>
             <li><a data-toggle="tab" href="#menu3">Русский</a></li>
         </ul>
 
         <div class="tab-content">
-            <div id="menu2" class="tab-pane fade">
+            <div id="menu2" class="tab-pane fade in active">
                 <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_hy')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'body_hy')->textArea() ?>
@@ -125,7 +118,7 @@ use yii\web\View;
                     </div>
                 </div>
             </div>
-            <div id="home" class="tab-pane fade in active">
+            <div id="home" class="tab-pane fade ">
                 <?php echo $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_en')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'body_en')->textArea() ?>

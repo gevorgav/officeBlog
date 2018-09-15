@@ -51,7 +51,7 @@ class NewsCategory extends ActiveRecord
             TimestampBehavior::className(),
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title_en',
+                'attribute' => 'title_hy',
                 'immutable' => true
             ]
         ];
@@ -63,7 +63,7 @@ class NewsCategory extends ActiveRecord
     public function rules()
     {
         return [
-            [['title_en'], 'required'],
+            [['title_hy'], 'required'],
             [['title_en', 'title_hy', 'title_ru'], 'string', 'max' => 512],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],

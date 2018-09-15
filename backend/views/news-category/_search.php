@@ -19,7 +19,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'slug') ?>
 
-    <?php echo $form->field($model, 'title_en') ?>
+    <?php echo $form->field($model, 'title_hy') ?>
 
     <?php echo $form->field($model, 'status') ?>
 

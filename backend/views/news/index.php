@@ -31,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'slug',
-            'title_en',
+            'title_hy',
             [
                 'attribute' => 'category_id',
                 'value' => function ($model) {
-                    return $model->category ? $model->category->title_en : null;
+                    return $model->category ? $model->category->title_hy : null;
                 },
-                'filter' => ArrayHelper::map(NewsCategory::find()->all(), 'id', 'title_en')
+                'filter' => ArrayHelper::map(NewsCategory::find()->all(), 'id', 'title_hy')
             ],
             [
                 'attribute' => 'created_by',

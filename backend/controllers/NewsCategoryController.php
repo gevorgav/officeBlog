@@ -67,7 +67,7 @@ class NewsCategoryController extends Controller
         $model = new NewsCategory();
 
         $categories = NewsCategory::find()->noParents()->all();
-        $categories = ArrayHelper::map($categories, 'id', 'title_en');
+        $categories = ArrayHelper::map($categories, 'id', 'title_hy');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -90,7 +90,7 @@ class NewsCategoryController extends Controller
         $model = $this->findModel($id);
 
         $categories = NewsCategory::find()->noParents()->andWhere(['not', ['id' => $id]])->all();
-        $categories = ArrayHelper::map($categories, 'id', 'title_en');
+        $categories = ArrayHelper::map($categories, 'id', 'title_hy');
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

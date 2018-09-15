@@ -49,7 +49,7 @@ class OfficialMessageCategory extends ActiveRecord
             TimestampBehavior::className(),
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title_en',
+                'attribute' => 'title_hy',
                 'immutable' => true
             ]
         ];
@@ -61,7 +61,7 @@ class OfficialMessageCategory extends ActiveRecord
     public function rules()
     {
         return [
-            [['title_en'], 'required'],
+            [['title_hy'], 'required'],
             [['id', 'parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['body'], 'string'],
             [['slug'], 'unique'],
