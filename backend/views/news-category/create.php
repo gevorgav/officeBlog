@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $model common\models\NewsCategory */
-/* @var $categories common\models\NewsCategory[] */
+/* @var $model common\models\ArticleCategory */
+/* @var $categories common\models\ArticleCategory[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'News Category',

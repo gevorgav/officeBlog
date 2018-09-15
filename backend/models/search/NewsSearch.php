@@ -1,18 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Home
- * Date: 05.11.2017
- * Time: 14:25
- */
 
 namespace backend\models\search;
 
-use Yii;
 use common\models\News;
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
+/**
+ * NewsSearch represents the model behind the search form about `common\models\News`.
+ */
 class NewsSearch extends News
 {
     /**

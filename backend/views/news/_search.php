@@ -19,9 +19,9 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'slug') ?>
 
-    <?php echo $form->field($model, 'title_en') ?>
+    <?php echo $form->field($model, 'title') ?>
 
-    <?php echo $form->field($model, 'body_en') ?>
+    <?php echo $form->field($model, 'body') ?>
 
     <?php echo $form->field($model, 'user_id') ?>
 

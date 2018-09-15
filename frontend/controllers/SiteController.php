@@ -107,7 +107,7 @@ class SiteController extends Controller
         //Home page configs
         $configs = HomePageConfigs::find()->one();
 
-        //Find Latest news by config
+        //Find Latest official-message by config
         $news = News::find()->where(['slug' => $configs->latest_news_slug])->one();
         if (!$news){
             $configs->show_latest_news = 0;
@@ -121,7 +121,7 @@ class SiteController extends Controller
             'dataProviderPYT' => $providerPYT,
             'categoryPYT' => $categoryModelPYT,
             'configs' => $configs,
-            'news' => $news,
+            'official-message' => $news,
             'upcoming'=>$upcoming]);
     }
 

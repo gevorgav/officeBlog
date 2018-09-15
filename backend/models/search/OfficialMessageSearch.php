@@ -2,19 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 29.10.2017
- * Time: 23:52
+ * Date: 05.11.2017
+ * Time: 14:25
  */
 
 namespace backend\models\search;
 
-
-use common\models\EventCategory;
+use common\models\OfficialMessage;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class EventCategorySearch extends EventCategory
+class OfficialMessageSearch extends OfficialMessage
 {
     /**
      * @inheritdoc
@@ -22,8 +21,8 @@ class EventCategorySearch extends EventCategory
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['slug', 'title_en'], 'safe'],
+            [['id', 'category_id', 'created_by', 'updated_by', 'status', 'published_at', 'created_at', 'updated_at'], 'integer'],
+            [['slug', 'title_en', 'body_en'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class EventCategorySearch extends EventCategory
      */
     public function search($params)
     {
-        $query = EventCategory::find();
+        $query = OfficialMessage::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -54,11 +53,19 @@ class EventCategorySearch extends EventCategory
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'slug' => $this->slug,
+            'created_by' => $this->created_by,
+            'category_id' => $this->category_id,
+            'updated_by' => $this->updated_by,
             'status' => $this->status,
+            'published_at' => $this->published_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'title_en', $this->title_en]);
+            ->andFilterWhere(['like', 'title_en', $this->title_en])
+            ->andFilterWhere(['like', 'body_en', $this->body_en]);
 
         return $dataProvider;
     }

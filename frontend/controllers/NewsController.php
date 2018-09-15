@@ -52,10 +52,10 @@ class NewsController extends Controller
     public function actionView($slug)
     {
         $model = News::find()->published()->andWhere(['slug' => $slug])->one();
-        $nextModel = News::find()->published()->andWhere(['>', '{{%news}}.published_at', $model->published_at] )->orderBy('{{%news}}.published_at')->one();
+        $nextModel = News::find()->published()->andWhere(['>', '{{%official-message}}.published_at', $model->published_at] )->orderBy('{{%official-message}}.published_at')->one();
         $latestNews = News::find()
             ->published()
-            ->orderBy(['{{%news}}.published_at' => SORT_DESC])
+            ->orderBy(['{{%official-message}}.published_at' => SORT_DESC])
             ->limit(5)
             ->all();
         $activities = array();

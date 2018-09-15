@@ -103,10 +103,10 @@ $this->registerCssFile("http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/
     <?php if ($configs->show_latest_news === 1 && $news):?>
     <section class="grey-bg white-txt-block">
         <div class="container">
-            <h2><?=Yii::t('frontend', 'Latest news')?></h2>
+            <h2><?=Yii::t('frontend', 'Latest official-message')?></h2>
             <div class="line"></div>
             <div class="col-xs-12 home-news-item"  style="background: url(<?= $news->thumbnail_base_url . '/' . $news->thumbnail_path?>) no-repeat center;background-size: cover;">
-                <a href="<?='news/'.$news->slug?>">
+                <a href="<?='official-message/'.$news->slug?>">
                     <div class="gradient-hr-56">
                         <h3 class="title"><?= $news->getMultilingual('title', Yii::$app->language)?></h3>
                         <h4 class="sub-title"><?php echo Yii::$app->formatter->asDate($news->published_at, "d MMM, y") ?></h4>
@@ -115,11 +115,11 @@ $this->registerCssFile("http://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/
                 </a>
             </div>
 <!--            <div class="flex-center">-->
-<!--                --><?//= Html::a(Yii::t('frontend', 'all news'), ['/news'], ['class' => 'button-liner blue']) ?>
+<!--                --><?//= Html::a(Yii::t('frontend', 'all official-message'), ['/official-message'], ['class' => 'button-liner blue']) ?>
 <!--            </div>-->
         </div>
         <div class="flex-center" style="margin-top: 48px;">
-            <?= Html::a(Yii::t('frontend', 'all news'), ['/news'], ['class' => 'button-liner blue']) ?>
+            <?= Html::a(Yii::t('frontend', 'all official-message'), ['/official-message'], ['class' => 'button-liner blue']) ?>
         </div>
 
     </section>

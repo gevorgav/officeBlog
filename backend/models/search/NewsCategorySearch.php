@@ -2,14 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 05.11.2017
- * Time: 14:27
+ * Date: 29.10.2017
+ * Time: 23:52
  */
 
 namespace backend\models\search;
 
 
 use common\models\NewsCategory;
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

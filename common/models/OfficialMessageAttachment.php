@@ -5,10 +5,10 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "event_attachment".
+ * This is the model class for table "official_message_attachment".
  *
  * @property integer $id
- * @property integer $event_id
+ * @property integer $official_message_id
  * @property string $path
  * @property string $base_url
  * @property string $type
@@ -17,14 +17,14 @@ use Yii;
  * @property integer $created_at
  * @property integer $order
  */
-class EventAttachment extends \yii\db\ActiveRecord
+class OfficialMessageAttachment extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%event_attachment}}';
+        return '{{%official_message_attachment}}';
     }
 
     /**
@@ -33,8 +33,8 @@ class EventAttachment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'event_id', 'path'], 'required'],
-            [['id', 'event_id', 'size', 'created_at', 'order'], 'integer'],
+            [['id', 'official_message_id', 'path'], 'required'],
+            [['id', 'official_message_id', 'size', 'created_at', 'order'], 'integer'],
             [['path', 'base_url', 'type', 'name'], 'string', 'max' => 255],
         ];
     }
@@ -46,7 +46,7 @@ class EventAttachment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'event_id' => 'Event ID',
+            'official_message_id' => 'Official Message ID',
             'path' => 'Path',
             'base_url' => 'Base Url',
             'type' => 'Type',
@@ -57,12 +57,9 @@ class EventAttachment extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEvent()
+    public function getOfficialMessage()
     {
-        return $this->hasOne(Event::className(), ['id' => 'event_id']);
+        return $this->hasOne(OfficialMessage::className(), ['id' => 'official_message_id']);
     }
 
     public function getUrl()

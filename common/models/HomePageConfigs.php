@@ -56,7 +56,7 @@ class HomePageConfigs extends ActiveRecord
         return [
             'latest_news_slug' =>  'Latest News Slug',
             'show_slider' => 'Show slider',
-            'show_latest_news' => 'Show latest news',
+            'show_latest_news' => 'Show latest official-message',
             'show_activity' => 'Show activity',
             'show_map' => 'Show map',
             'show_info_block' => 'Show info block',

@@ -1,20 +1,23 @@
 <?php
 /**
  * Created by PhpStorm.
- * Time: 2:31 PM
+ * User: Home
+ * Date: 05.11.2017
+ * Time: 14:24
  */
 
 namespace common\models\query;
 
+
 use common\models\News;
 use yii\db\ActiveQuery;
 
-class NewsQuery extends ActiveQuery
+class OfficialMessageQuery extends ActiveQuery
 {
     public function published()
     {
         $this->andWhere(['status' => News::STATUS_PUBLISHED]);
-        $this->andWhere(['<', '{{%news}}.published_at', time()]);
+        $this->andWhere(['<', '{{%official_message}}.published_at', time()]);
         return $this;
     }
 }

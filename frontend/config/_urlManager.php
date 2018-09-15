@@ -10,7 +10,7 @@ return [
         // use temporary redirection instead of permanent for debugging
         'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
     ],
-    'languages' => ['hy', 'en', 'ru', 'de','fr', 'es', 'ar', 'fa'],
+    'languages' => ['hy', 'en', 'ru'],
     'rules'=> [
 
         //Site
@@ -24,11 +24,11 @@ return [
         // Pages
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
         //Events
-        ['pattern'=>'events', 'route'=>'event/index'],
-        ['pattern'=>'events/<slug>', 'route'=>'event/view'],
-        //News
         ['pattern'=>'news', 'route'=>'news/index'],
         ['pattern'=>'news/<slug>', 'route'=>'news/view'],
+        //News
+        ['pattern'=>'official-message', 'route'=>'official-message/index'],
+        ['pattern'=>'official-message/<slug>', 'route'=>'official-message/view'],
         // Articles
         ['pattern'=>'<category>/<slug>', 'route'=>'article/category-routing'],
         ['pattern'=>'<category>', 'route'=>'article/category-routing'],

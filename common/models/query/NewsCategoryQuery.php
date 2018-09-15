@@ -1,13 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Home
- * Date: 05.11.2017
- * Time: 14:22
+ * User: gev
+ * Date: 7/4/14
+ * Time: 2:31 PM
  */
 
 namespace common\models\query;
-
 
 use common\models\NewsCategory;
 use yii\db\ActiveQuery;

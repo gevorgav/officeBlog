@@ -2,19 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 05.11.2017
- * Time: 20:17
+ * Date: 22.10.2017
+ * Time: 13:18
  */
-
 namespace backend\controllers;
 
+use backend\models\search\NewsSearch;
 use common\models\News;
 use common\models\NewsCategory;
 use Yii;
-use backend\models\search\NewsSearch;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+
+
 
 class NewsController extends Controller
 {
@@ -100,7 +102,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Finds the Event model based on its primary key value.
+     * Finds the News model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return News the loaded model

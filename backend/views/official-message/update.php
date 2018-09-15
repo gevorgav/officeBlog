@@ -3,16 +3,15 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\EventCategory */
+/* @var $model common\models\OfficialMessage */
 
 $this->title = Yii::t('backend', 'Update {modelClass}: ', [
-    'modelClass' => 'Event Category',
+    'modelClass' => 'OfficialMessage',
 ]) . ' ' . $model->title_en;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Event Categories'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title_en, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Official Message'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
-<div class="article-category-update">
+<div class="article-update">
 
     <?php echo $this->render('_form', [
         'model' => $model,

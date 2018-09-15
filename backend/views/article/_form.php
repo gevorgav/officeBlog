@@ -92,11 +92,6 @@ use mihaildev\ckeditor\CKEditor;
             <?php if (!$model->isNewRecord): ?>
                 <li><a data-toggle="tab" href="#menu2">Հայերեն</a></li>
                 <li><a data-toggle="tab" href="#menu3">Русский</a></li>
-                <li><a data-toggle="tab" href="#menu4">Deutsch</a></li>
-                <li><a data-toggle="tab" href="#menu5">Français</a></li>
-                <li><a data-toggle="tab" href="#menu6">Español</a></li>
-                <li><a data-toggle="tab" href="#menu7">العربية</a></li>
-                <li><a data-toggle="tab" href="#menu8">Iranian</a></li>
             <?php endIf ?>
         </ul>
 
@@ -127,51 +122,6 @@ use mihaildev\ckeditor\CKEditor;
                 <?php echo $form->field($model, 'body_ru')->textArea(['style' => 'display:none'])->label(false) ?>
                 <?php echo $form->field($model, 'keywords_ru')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
                 <section class="template-text" id="template_ru" lang="ru">
-
-                </section>
-            </div>
-            <div id="menu4" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_de')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'short_description_de')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_de')->textArea(['style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_de')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
-                <section class="template-text" id="template_de" lang="de">
-
-                </section>
-            </div>
-            <div id="menu5" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_fr')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'short_description_fr')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_fr')->textArea(['style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_fr')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
-                <section class="template-text" id="template_fr" lang="fr">
-
-                </section>
-            </div>
-            <div id="menu6" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_es')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'short_description_es')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_es')->textArea(['style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_es')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
-                <section class="template-text" id="template_es" lang="es">
-
-                </section>
-            </div>
-            <div id="menu7" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_ar')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <?php echo $form->field($model, 'short_description_ar')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <?php echo $form->field($model, 'body_ar')->textArea(['dir' => 'rtl', 'style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_ar')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <section class="template-text" id="template_ar" lang="ar">
-
-                </section>
-            </div>
-            <div id="menu8" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_fa')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <?php echo $form->field($model, 'short_description_fa')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <?php echo $form->field($model, 'body_fa')->textArea(['dir' => 'rtl', 'style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_fa')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true, 'dir' => 'rtl']) ?>
-                <section class="template-text" id="template_fa" lang="fa">
 
                 </section>
             </div>

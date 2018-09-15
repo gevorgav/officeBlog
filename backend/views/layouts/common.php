@@ -151,15 +151,15 @@ $bundle = BackendAsset::register($this);
                         'icon' => '<i class="fa fa-edit"></i>',
                         'options' => ['class' => 'treeview'],
                         'items' => [
-                            ['label' => Yii::t('backend', 'Static pages'), 'url' => ['/page/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'General Config'), 'url' => ['/configs/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Slider'), 'url' => ['/slider/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                            ['label' => Yii::t('backend', 'Static pages'), 'url' => ['/page/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                            ['label' => Yii::t('backend', 'General Config'), 'url' => ['/configs/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                            ['label' => Yii::t('backend', 'Slider'), 'url' => ['/slider/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Articles'), 'url' => ['/article/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'Article Categories'), 'url' => ['/article-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Events'), 'url' => ['/event/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Event Categories'), 'url' => ['/event-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'News'), 'url' => ['/news/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'News Categories'), 'url' => ['/news-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Official Messages'), 'url' => ['/official-message/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+                            ['label' => Yii::t('backend', 'Official Message Categories'), 'url' => ['/official-message-category/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
 //                            ['label' => Yii::t('backend', 'Text Widgets'), 'url' => ['/widget-text/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
 //                            ['label' => Yii::t('backend', 'Menu Widgets'), 'url' => ['/menu/creator'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
 //                            ['label' => Yii::t('backend', 'Menu Widgets'), 'url' => ['/widget-menu/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
@@ -182,19 +182,19 @@ $bundle = BackendAsset::register($this);
                         'icon' => '<i class="fa fa-cogs"></i>',
                         'options' => ['class' => 'treeview'],
                         'items' => [
-                            [
-                                'label' => Yii::t('backend', 'i18n'),
-                                'url' => '#',
-                                'icon' => '<i class="fa fa-flag"></i>',
-                                'options' => ['class' => 'treeview'],
-                                'items' => [
-                                    ['label' => Yii::t('backend', 'i18n Source Message'), 'url' => ['/i18n/i18n-source-message/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                                    ['label' => Yii::t('backend', 'i18n Message'), 'url' => ['/i18n/i18n-message/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                                ]
-                            ],
-                            ['label' => Yii::t('backend', 'Key-Value Storage'), 'url' => ['/key-storage/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                            [
+//                                'label' => Yii::t('backend', 'i18n'),
+//                                'url' => '#',
+//                                'icon' => '<i class="fa fa-flag"></i>',
+//                                'options' => ['class' => 'treeview'],
+//                                'items' => [
+//                                    ['label' => Yii::t('backend', 'i18n Source Message'), 'url' => ['/i18n/i18n-source-message/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                                    ['label' => Yii::t('backend', 'i18n Message'), 'url' => ['/i18n/i18n-message/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                                ]
+//                            ],
+//                            ['label' => Yii::t('backend', 'Key-Value Storage'), 'url' => ['/key-storage/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'File Storage'), 'url' => ['/file-storage/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
-                            ['label' => Yii::t('backend', 'Cache'), 'url' => ['/cache/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
+//                            ['label' => Yii::t('backend', 'Cache'), 'url' => ['/cache/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             ['label' => Yii::t('backend', 'File Manager'), 'url' => ['/file-manager/index'], 'icon' => '<i class="fa fa-angle-double-right"></i>'],
                             [
                                 'label' => Yii::t('backend', 'System Information'),

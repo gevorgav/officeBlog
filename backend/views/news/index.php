@@ -15,8 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a(
             Yii::t('backend', 'Create News', ['modelClass' => 'News']),
@@ -55,7 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     Yii::t('backend', 'Published')
                 ]
             ],
-            'published_at:datetime',
             'created_at:datetime',
 
             // 'updated_at',

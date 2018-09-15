@@ -8,6 +8,7 @@ use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
+
 /**
  * This is the model class for table "news_category".
  *
@@ -16,11 +17,6 @@ use yii\db\ActiveRecord;
  * @property string $title_hy
  * @property string $title_en
  * @property string $title_ru
- * @property string $title_de
- * @property string $title_fr
- * @property string $title_es
- * @property string $title_ar
- * @property string $title_fa
  * @property string $body
  * @property integer $parent_id
  * @property integer $status
@@ -32,6 +28,7 @@ class NewsCategory extends ActiveRecord
 
     const STATUS_ACTIVE = 1;
     const STATUS_DRAFT = 0;
+
     /**
      * @inheritdoc
      */
@@ -67,11 +64,10 @@ class NewsCategory extends ActiveRecord
     {
         return [
             [['title_en'], 'required'],
-            [['id', 'parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['body'], 'string'],
+            [['title_en', 'title_hy', 'title_ru'], 'string', 'max' => 512],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],
-            [['title_hy', 'title_en', 'title_ru', 'title_de', 'title_fr', 'title_es', 'title_ar', 'title_fa'], 'string', 'max' => 512],
+            ['status', 'integer'],
             ['parent_id', 'exist', 'targetClass' => NewsCategory::className(), 'targetAttribute' => 'id']
         ];
     }
@@ -84,14 +80,9 @@ class NewsCategory extends ActiveRecord
         return [
             'id' => 'ID',
             'slug' => 'Slug',
-            'title_hy' => 'Title',
             'title_en' => 'Title',
+            'title_hy' => 'Title',
             'title_ru' => 'Title',
-            'title_de' => 'Title',
-            'title_fr' => 'Title',
-            'title_es' => 'Title',
-            'title_ar' => 'Title',
-            'title_fa' => 'Title',
             'body' => 'Body',
             'parent_id' => 'Parent ID',
             'status' => 'Status',
@@ -101,19 +92,14 @@ class NewsCategory extends ActiveRecord
     }
 
     public function getMultilingual($multilingualField, $lang){
-        return $this->getMultilingualParams($multilingualField."_".$lang);
+        return $this->getMultilignualParams($multilingualField."_".$lang);
     }
 
-    private function getMultilingualParams($fieldLang){
+    private function getMultilignualParams($fieldLang){
         $arr = [
             'title_hy' => $this->title_hy,
             'title_en' => $this->title_en,
             'title_ru' => $this->title_ru,
-            'title_de' => $this->title_de,
-            'title_fr' => $this->title_fr,
-            'title_es' => $this->title_es,
-            'title_ar' => $this->title_ar,
-            'title_fa' => $this->title_fa,
         ];
         foreach ($arr as $i => $value) {
             if ($fieldLang == $i)
@@ -138,6 +124,4 @@ class NewsCategory extends ActiveRecord
     {
         return $this->hasMany(NewsCategory::className(), ['id' => 'parent_id']);
     }
-
-
 }

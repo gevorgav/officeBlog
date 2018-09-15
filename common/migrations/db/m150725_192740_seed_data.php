@@ -67,7 +67,7 @@ class m150725_192740_seed_data extends Migration
 
         $this->insert('{{%article_category}}', [
             'id' => 1,
-            'slug' => 'news',
+            'slug' => 'official-message',
             'title' => 'News',
             'status' => \common\models\ArticleCategory::STATUS_ACTIVE,
             'created_at' => time()

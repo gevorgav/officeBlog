@@ -1,24 +1,24 @@
 <?php
 
 use common\grid\EnumColumn;
-use common\models\EventCategory;
+use common\models\NewsCategory;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\ArticleSearch */
+/* @var $searchModel backend\models\search\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Events');
+$this->title = Yii::t('backend', 'Official Message');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-index">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 
     <p>
         <?= Html::a(
-            Yii::t('backend', 'Create Event', ['modelClass' => 'Event']),
+            Yii::t('backend', 'Create Official Message', ['modelClass' => 'OfficialMessage']),
             ['create'],
             ['class' => 'btn btn-success']) ?>
     </p>
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($model) {
                     return $model->category ? $model->category->title_en : null;
                 },
-                'filter' => ArrayHelper::map(EventCategory::find()->all(), 'id', 'title_en')
+                'filter' => ArrayHelper::map(NewsCategory::find()->all(), 'id', 'title_hy')
             ],
             [
                 'attribute' => 'created_by',
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Yii::t('backend', 'Published')
                 ]
             ],
-            'event_date_time:datetime',
+            'published_at:datetime',
             'created_at:datetime',
 
             // 'updated_at',

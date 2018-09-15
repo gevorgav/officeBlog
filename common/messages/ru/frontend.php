@@ -18,8 +18,8 @@
  */
 return [
     'read more' => 'read more',
-    'Latest news' => 'Latest news',
-    'all news' => 'all news',
+    'Latest official-message' => 'Latest official-message',
+    'all official-message' => 'all official-message',
     'Activities' => 'Activities',
     'Time' => 'Time',
     'Currency' => 'Currency',

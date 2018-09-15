@@ -57,6 +57,9 @@ class NewsAttachment extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getNews()
     {
         return $this->hasOne(News::className(), ['id' => 'news_id']);

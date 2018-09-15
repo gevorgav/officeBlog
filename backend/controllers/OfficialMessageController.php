@@ -2,22 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 29.10.2017
- * Time: 23:49
+ * Date: 05.11.2017
+ * Time: 20:17
  */
 
 namespace backend\controllers;
 
+use common\models\OfficialMessage;
+use common\models\OfficialMessageCategory;
 use Yii;
-use yii\helpers\ArrayHelper;
+use backend\models\search\OfficialMessageSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
-use backend\models\search\EventCategorySearch;
-use common\models\EventCategory;
-
-class EventCategoryController extends Controller
+class OfficialMessageController extends Controller
 {
     public function behaviors()
     {
@@ -25,63 +24,50 @@ class EventCategoryController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
+                    'delete' => ['post']
+                ]
+            ]
         ];
     }
 
     /**
-     * Lists all EventCategory models.
+     * Lists all OfficialMessage models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EventCategorySearch();
+        $searchModel = new OfficialMessageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $dataProvider->sort = [
+            'defaultOrder'=>['published_at'=>SORT_DESC]
+        ];
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider
         ]);
     }
 
     /**
-     * Displays a single EventCategory model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new EventCategory model.
+     * Creates a new OfficialMessage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new EventCategory();
-
-        $categories = EventCategory::find()->noParents()->all();
-        $categories = ArrayHelper::map($categories, 'id', 'title_en');
+        $model = new OfficialMessage();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'categories' => $categories,
+                'categories' => OfficialMessageCategory::find()->active()->all(),
             ]);
         }
     }
 
     /**
-     * Updates an existing EventCategory model.
+     * Updates an existing OfficialMessage model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,22 +76,18 @@ class EventCategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        $categories = EventCategory::find()->noParents()->andWhere(['not', ['id' => $id]])->all();
-        $categories = ArrayHelper::map($categories, 'id', 'title_en');
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'categories' => $categories,
+                'categories' => OfficialMessageCategory::find()->active()->all(),
             ]);
         }
     }
 
     /**
-     * Deletes an existing EventCategory model.
+     * Deletes an existing News model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,15 +100,15 @@ class EventCategoryController extends Controller
     }
 
     /**
-     * Finds the EventCategory model based on its primary key value.
+     * Finds the Event model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return EventCategory the loaded model
+     * @return OfficialMessage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = EventCategory::findOne($id)) !== null) {
+        if (($model = OfficialMessage::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\ArticleSearch */
+/* @var $model backend\models\search\OfficialMessageSearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
@@ -19,9 +19,9 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'slug') ?>
 
-    <?php echo $form->field($model, 'title') ?>
+    <?php echo $form->field($model, 'title_en') ?>
 
-    <?php echo $form->field($model, 'body') ?>
+    <?php echo $form->field($model, 'body_en') ?>
 
     <?php echo $form->field($model, 'user_id') ?>
 
