@@ -7,7 +7,7 @@ use frontend\models\search\GeneralSearch;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('frontend', 'News');
+$this->title = Yii::t('frontend', 'Official Messages');
 
 $this->registerMetaTag([
     'name' => 'description',
@@ -26,8 +26,8 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 ?>
 
 <div id="content" class="content">
-    <div class="news-wrap">
-        <?= Html::a('<h2>'.Yii::t('frontend', 'News').'</h2>', ['news/index'],
+    <div class="official-message-warp">
+        <?= Html::a('<h2>'.Yii::t('frontend', 'Official Messages').'</h2>', ['official-messages/index'],
             ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
         <?php echo \common\widgets\ListView::widget([
             'dataProvider' => $dataProvider,

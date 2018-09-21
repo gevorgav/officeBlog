@@ -2,21 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 30.10.2017
- * Time: 15:58
+ * Date: 20.11.2017
+ * Time: 20:46
  */
 
+# var mo
 namespace frontend\controllers;
 
-use common\models\Event;
+
+use backend\models\search\OfficialMessageSearch;
+use common\models\Article;
+use common\models\News;
+use common\models\OfficialMessage;
+use frontend\models\search\NewsSearch;
+use frontend\models\search\GeneralSearch;
+use yii\helpers\Html;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use frontend\models\search\GeneralSearch;
-use yii\helpers\Html;
-use frontend\models\search\EventSearch;
 
-class EventController extends Controller
+class OfficialMessagesController extends Controller
 {
 
     public function beforeAction($action){
@@ -27,16 +32,15 @@ class EventController extends Controller
         }
         return true;
     }
-
     /**
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new EventSearch();
+        $searchModel = new OfficialMessageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = [
-            'defaultOrder' => ['event_date_time' => SORT_DESC]
+            'defaultOrder' => ['published_at' => SORT_DESC]
         ];
         $dataProvider->pagination->pageSize = 5;
         return $this->render('index', ['dataProvider' => $dataProvider]);
@@ -49,12 +53,10 @@ class EventController extends Controller
      */
     public function actionView($slug)
     {
-        $model = Event::find()->published()->andWhere(['slug' => $slug])->one();
-        $nextModel = Event::find()->published()->andWhere(['>', '{{%event}}.event_date_time', $model->event_date_time] )->orderBy('{{%event}}.event_date_time')->one();
-        $upcoming = Event::find()
+        $model = OfficialMessage::find()->published()->andWhere(['slug' => $slug])->one();
+        $latestNews = OfficialMessage::find()
             ->published()
-            ->andWhere(['>', '{{%event}}.event_date_time',time()] )
-            ->orderBy('{{%event}}.event_date_time')
+            ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
             ->limit(3)
             ->all();
 
@@ -63,6 +65,6 @@ class EventController extends Controller
         }
 
         $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model' => $model, 'nextModel' => $nextModel, 'upcoming' => $upcoming]);
+        return $this->render($viewFile, ['model' => $model, 'latestNews' => $latestNews]);
     }
 }

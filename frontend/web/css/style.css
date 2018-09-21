@@ -2,8 +2,8 @@ header {
 	background-color: rgb( 235, 235, 235 );
 	background-image: url(../images/header-bg.png);
 	background-position: top left;
-	background-size: 100% 100%; 
-  	height: 319px;
+	background-size: 100% 100%;
+	height: 319px;
 }
 
 header .logo {
@@ -13,20 +13,20 @@ header .logo {
 	background-position: top left;
 	background-size: 100% 100%;
 	width: 135px;
-    height: 191px;
+	height: 191px;
 }
 
 header .site-name {
-    font-family: OpenSansBold;
-    text-transform: uppercase;
-    font-size: 30px;
-    color: #213d51;
-    font-weight: bold;
-    line-height: 1.332;
-    float: left;
-    width: calc(100% - 155px);
-    margin-top: 60px;
-    margin-left: 20px;
+	font-family: OpenSansBold;
+	text-transform: uppercase;
+	font-size: 30px;
+	color: #213d51;
+	font-weight: bold;
+	line-height: 1.332;
+	float: left;
+	width: 100%;
+	margin-top: -150px;
+	margin-left: 130px;
 }
 
 header > div {
@@ -38,30 +38,30 @@ header > div {
 }
 
 header > div:last-child {
-    width: calc(50% - 5px);
+	width: calc(50% - 5px);
 }
 
 header > div > div {
 	top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    width: 80%;
-    max-width: 100%;
-    max-height: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	width: 80%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .languages {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .languages li {
 	display: inline-flex;
 	margin-left: 10px;
-	
+
 }
 
 .languages li a {
@@ -87,23 +87,34 @@ main {
 	float: left;
 }
 
+.right-sidebar {
+	float: right;
+}
+
 .right-sidebar .widget-search form {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .right-sidebar .widget-search form input {
-    transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -webkit-transition: 0.5s all;
+	transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-webkit-transition: 0.5s all;
 }
 
 .content {
-    width: calc(100% - 600px);
-    float: left;
-    padding-left: 50px;
-    padding-right: 50px;
+	width: calc(100% - 500px);
+	float: left;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.contact {
+	width: calc(100% - 500px);
+	float: left;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .left-sidebar h2,
@@ -139,20 +150,20 @@ main {
 
 .left-sidebar-navigation ul li.has-submenu::after {
 	position: absolute;
-    content: "";
-    border: 1px solid;
-    border-width: 7px 7px;
-    border-color: transparent transparent transparent #213d51;
-    top: 25px;
-    right: 4px;
+	content: "";
+	border: 1px solid;
+	border-width: 7px 7px;
+	border-color: transparent transparent transparent #213d51;
+	top: 25px;
+	right: 4px;
 }
 
 
 .left-sidebar-navigation ul li.open.has-submenu::after,
 .left-sidebar-navigation ul li.current.has-submenu::after {
 	top: 30px;
-    right: 9px;
-    border-color: #e9a154 transparent transparent transparent;
+	right: 9px;
+	border-color: #e9a154 transparent transparent transparent;
 }
 
 .left-sidebar-navigation ul.sub-menu {
@@ -259,7 +270,7 @@ footer .widget {
 }
 
 footer .widget.feedback {
-    width: 330px;
+	width: 330px;
 }
 
 footer .widget.hot-line-numbers {
@@ -278,15 +289,15 @@ footer .widget.hot-line-numbers li span.right {
 
 footer .widget.feedback ul li,
 footer .widget.hot-line-numbers ul li {
-    display: flow-root;
+	display: flow-root;
 }
 
 footer .widget h4,
 footer .widget li,
 footer .widget li a {
 	color: #fff;
-  	font-size: 14.754px;
-  	font-family: "OpenSansLight";
+	font-size: 14.754px;
+	font-family: "OpenSansLight";
 }
 
 footer .widget h4 {
@@ -300,7 +311,7 @@ footer .widget h4 {
 }
 
 footer .widget.follow-us {
-    width: 110px;
+	width: 110px;
 }
 
 footer .widget.follow-us ul {
@@ -310,12 +321,22 @@ footer .widget.follow-us ul {
 footer .widget.follow-us ul li {
 	margin-left: 5px;
 	margin-right: 5px;
-  	font-size: 14.754px;
-  	font-family: "OpenSansLight";
+	font-size: 14.754px;
+	font-family: "OpenSansLight";
 }
 
 footer .copyright {
 	margin-top: 50px;
 	font-size: 11.803px;
 	font-family: "OpenSansLight";
+}
+
+
+/*   ------------------     */
+.ug-item-wrapper img {
+	top: 0px !important;
+}
+
+.ug-thumb-image {
+	top: 0px !important;
 }

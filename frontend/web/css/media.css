@@ -1,6 +1,9 @@
 @media screen and (max-width: 2560px) {
+	header .site-name {
+		margin-top: -135px;
+	}
 	footer .widget.hot-line-numbers {
-	    margin-left: 22%;
+		margin-left: 22%;
 	}
 
 	footer .widget.follow-us {
@@ -10,7 +13,7 @@
 
 @media screen and (max-width: 1900px) {
 	footer .widget.hot-line-numbers {
-	    margin-left: 12%;
+		margin-left: 12%;
 	}
 
 	footer .widget.follow-us {
@@ -20,41 +23,53 @@
 
 @media screen and (max-width: 1610px) {
 	footer .widget.hot-line-numbers {
-	    margin-left: 6%;
-    	margin-right: 6%;
+		margin-left: 6%;
+		margin-right: 6%;
 	}
 }
 
 @media screen and (max-width: 1440px) {
+	header .site-name {
+		margin-top: -150px;
+	}
+
 	main {
-	    width: 80%;
+		width: 80%;
 	}
 
 	.content {
-		width: 50%;
+		width: calc(100% - 420px);
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 
-	.left-sidebar {
-		width: calc(29% - 50px);
+	.contact {
+		width: calc(100% - 230px);
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 
 	.right-sidebar {
 		width: 190px;
-		float: right;
 	}
 
 	.left-sidebar-navigation ul li {
-	    padding-top: 20px;
+		padding-top: 20px;
 	}
 
 	.left-sidebar-navigation ul li a {
 		line-height: 1.2;
 	}
+
+	.left-sidebar {
+		width: 230px;
+	}
+
 }
 
 @media screen and (max-width: 1400px) {
 	header {
-	    height: 260px;
+		height: 260px;
 	}
 
 	footer .container {
@@ -83,13 +98,9 @@
 		width: 95%;
 	}
 
-	.content {
-		width: 45%;
-	}
-
 	footer .widget.hot-line-numbers {
 		margin-left: 5%;
-    	margin-right: 5%;
+		margin-right: 5%;
 	}
 
 	footer .widget.follow-us {
@@ -97,7 +108,7 @@
 	}
 }
 
-@media screen and (max-width: 1100px) { 
+@media screen and (max-width: 1100px) {
 	header {
 		height: 200px;
 	}
@@ -111,38 +122,41 @@
 
 @media screen and (max-width: 1024px) {
 	header .left-side {
-	    width: 100% !important;
-	    height: calc(100% - 30px);
+		width: 100% !important;
+		height: calc(100% - 30px);
 	}
 
 	header .site-name {
-		width: 60%;
+		width: 50%;
+		margin-top: 60px;
+		margin-left: -4px;
 	}
 
 	header .right-side {
 		width: 100% !important;
-    	height: 30px;
+		height: 30px;
 	}
 
 	footer .widget.follow-us {
 		float: none;
-	    width: 100%;
-	    text-align: center;
-	    margin-top: 15px;
+		width: 100%;
+		text-align: center;
+		margin-top: 15px;
 	}
 }
 
 @media screen and (max-width: 970px) {
 	header {
-	    height: 140px;
+		height: 140px;
 	}
 
 	header .logo {
-	    width: 95px;
-    	height: 130px;
+		width: 95px;
+		height: 130px;
 	}
 
 	header .site-name {
+		margin-top: 38px;
 		font-size: 16px;
 	}
 
@@ -161,8 +175,13 @@
 }
 
 @media screen and (max-width: 850px) {
+	.content {
+		width: calc(100% - 380px);
+	}
+
 	.right-sidebar {
-	    width: 140px;
+		margin-top: 9px;
+		width: 140px;
 	}
 
 	.right-sidebar h2 {
@@ -185,10 +204,10 @@
 	}
 
 	.nav-open-toggle {
-	    display: block;
-	    float: right;
-	    width: 30px;
-	    height: 35px;
+		display: block;
+		float: right;
+		width: 30px;
+		height: 35px;
 	}
 
 	.left-sidebar .nav-open-toggle:after {
@@ -199,14 +218,14 @@
 		transform: translateY(-50%);
 		border-style: solid;
 		border-width: 10px 10px;
-	    border-color: transparent transparent transparent #213d51;
+		border-color: transparent transparent transparent #213d51;
 	}
-    
-    .left-sidebar.open-menu .nav-open-toggle:after {
-        right: 5px;
-        top: calc(50% + 5px);
-        border-color: #e9a154 transparent transparent transparent;
-    }
+
+	.left-sidebar.open-menu .nav-open-toggle:after {
+		right: 5px;
+		top: calc(50% + 5px);
+		border-color: #e9a154 transparent transparent transparent;
+	}
 
 	.left-sidebar-navigation {
 		display: none;
@@ -223,6 +242,12 @@
 		margin: 20px auto;
 	}
 
+	.contact {
+		width: 100%;
+		padding: 0;
+		margin: 20px auto;
+	}
+
 	footer .widget.feedback,
 	footer .widget.hot-line-numbers {
 		width: 100%;
@@ -232,15 +257,15 @@
 		border-bottom: 1px solid #fff;
 		padding-bottom: 10px;
 	}
-    footer .container {
-        width: calc(95% - 40px);
-    }
+	footer .container {
+		width: calc(95% - 40px);
+	}
 
 }
 
 @media screen and (max-width: 660px) {
 	header {
-		height: 220px;
+		height: auto;
 		background-image: none;
 	}
 
@@ -249,25 +274,29 @@
 	}
 
 	header .logo {
-		width: 74px;
+		width: 100px;
 		height: 130px;
 		margin: auto;
 		float: none;
-	}		
+	}
 
 	header .site-name {
 		width: 100%;
 		font-size: 20px;
 		text-align: center;
-    	margin: 0;
+		margin: 0;
 	}
 }
 
 @media screen and (max-width: 425px) {
-    footer .container {
-        padding-left: 0;
-        padding-right: 0;
-    }
+	header .site-name {
+		font-size: 18px;
+	}
+
+	footer .container {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 @media screen and (max-width: 340px) {

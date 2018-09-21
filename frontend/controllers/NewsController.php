@@ -2,22 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: Home
- * Date: 20.11.2017
- * Time: 20:46
+ * Date: 30.10.2017
+ * Time: 15:58
  */
 
-# var mo
 namespace frontend\controllers;
 
-
-use common\models\Article;
 use common\models\News;
 use frontend\models\search\NewsSearch;
-use frontend\models\search\GeneralSearch;
-use yii\helpers\Html;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use frontend\models\search\GeneralSearch;
+use yii\helpers\Html;
 
 class NewsController extends Controller
 {
@@ -30,6 +27,7 @@ class NewsController extends Controller
         }
         return true;
     }
+
     /**
      * @return string
      */
@@ -52,25 +50,16 @@ class NewsController extends Controller
     public function actionView($slug)
     {
         $model = News::find()->published()->andWhere(['slug' => $slug])->one();
-        $nextModel = News::find()->published()->andWhere(['>', '{{%official-message}}.published_at', $model->published_at] )->orderBy('{{%official-message}}.published_at')->one();
-        $latestNews = News::find()
+        $upcoming = News::find()
             ->published()
-            ->orderBy(['{{%official-message}}.published_at' => SORT_DESC])
-            ->limit(5)
+            ->orderBy(['{{%news}}.published_at' => SORT_DESC])
+            ->limit(3)
             ->all();
-        $activities = array();
-        for ($i = 1; $i < 4; $i++){
-            if (!is_null(Article::find()->where(['slug' => $model->{'activity_slug_'.$i}])->one())){
-                $activities[] = Article::find()->where(['slug' => $model->{'activity_slug_'.$i}])->one();
-            }
-
-        }
-
         if (!$model) {
             throw new NotFoundHttpException;
         }
 
         $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model' => $model, 'nextModel' => $nextModel, 'latestNews' => $latestNews, 'activities' => $activities]);
+        return $this->render($viewFile, ['model' => $model,'upcoming' => $upcoming]);
     }
 }

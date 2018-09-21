@@ -16,12 +16,13 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
     $model->search = Yii::$app->getRequest()->getQueryParam('search');
 }
 
+
 ?>
     <header id="header" class="header">
         <div class="left-side">
             <div class="p-central">
-                <a class="logo" href=""></a>
-                <a href="">
+                <a class="logo" href="<?= Yii::$app->homeUrl?>"></a>
+                <a href="<?= Yii::$app->homeUrl?>">
                     <h1 id="site_name" class="site-name">
                         ԱՐՑԱԽԻ ՀԱՆՐԱՊԵՏՈՒԹՅՈՒՆ ԱԶԳԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅԱՆ ԾԱՌԱՅՈՒԹՅՈՒՆ
                     </h1>
@@ -41,7 +42,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 
     <main id="main" class="main">
         <div id="left_sidebar" class="left-sidebar">
-            <h2> Enforcement Service <span id="nav_open_toggle" class="nav-open-toggle" data-open="false"></span> </h2>
+            <h2><?=Yii::t('frontend', 'Պաշտոնական կայք')?><span id="nav_open_toggle" class="nav-open-toggle" data-open="false"></span> </h2>
             <nav id="left_sidebar_navigation" class="left-sidebar-navigation">
                 <ul>
                     <li class="has-submenu">
@@ -69,23 +70,6 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
         </div>
 
         <?php echo $content ?>
-
-        <div id="right_sidebar" class="right-sidebar">
-            <div class="widget widget-search">
-                <h2> Search </h2>
-                <form method="POST" action="">
-                    <input type="text" name="s" />
-                </form>
-            </div>
-            <div class="widget widget-connect-us">
-                <h2> Connect  with us </h2>
-                <a class="connect" href="#connect-with-us">
-                    <i class="icon-mail"></i>
-                    Contact US
-                </a>
-            </div>
-        </div>
-        <div class="clearfix"></div>
     </main>
 
 

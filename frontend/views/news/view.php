@@ -1,12 +1,15 @@
 <?php
-use common\models\NewsCategory;
+use common\models\EventCategory;
+use frontend\models\search\GeneralSearch;
 use yii\web\View;
 use yii\helpers\Html;
-/* @var $this yii\web\View */
-/* @var $model common\models\News */
-/* @var $nextModel common\models\News */
-/* @var $activities Array common\models\Activity */
+use yii\widgets\ActiveForm;
 
+/* @var $this yii\web\View */
+/* @var $model common\models\Event */
+/* @var $nextModel common\models\Event */
+/* @var $item common\models\Event */
+/* @var $upcoming [] */
 //------ SEO ------------
 $this->title = $model->getMultilingual('title', YII::$app->language);
 
@@ -18,6 +21,7 @@ $this->registerMetaTag([
     'name' => 'keywords',
     'content' => $model->getMultilingual('keywords', YII::$app->language),
 ]);
+
 $this->registerJsFile(
     '/gallery-js/ug-common-libraries.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
@@ -92,8 +96,6 @@ $this->registerJsFile(
 );
 
 
-
-
 $this->registerJsFile(
     '/gallery-js/ug-lightbox.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
@@ -122,64 +124,37 @@ $this->registerJs(
 
                 });
     ");
-
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'News'), 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Events'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
+
+//search
+$searchModel = new GeneralSearch();
+if (Yii::$app->getRequest()->getQueryParam('search') != null) {
+    $searchModel->search = Yii::$app->getRequest()->getQueryParam('search');
+}
 ?>
 
-<section class="news">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 news-content">
-                <h2><?= $model->getMultilingual('title', YII::$app->language);?></h2>
-                <div class="tag light-text">
-                    <i class="fa fa-tag" aria-hidden="true"></i>
-                    <span><?= $model->category->getMultilingual('title', YII::$app->language);?></span>
-                </div>
-                <div class="post-date light-text">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    <span><?php echo Yii::$app->formatter->asDate($model->published_at, "d MMM, y") ?></span>
-                </div>
-                <div class="news-main-block">
-<!--                --><?php //echo Html::img($model->thumbnail_base_url.'/' . $model->thumbnail_path,['width' => '100px', 'alt' => $model->getMultilingual('title', Yii::$app->language)]);?>
-                <?= $model->getMultilingual('body', YII::$app->language);?>
-                </div>
+<div id="content" class="content">
+    <div class="news-wrap">
+        <?= Html::a('<h2>'.Yii::t('frontend', 'News').'</h2>', ['news/index'],
+            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
+        <div id="article_1" class="article">
+            <div class="thumbnail">
+                <img src="<?= $model->preview_base_url . '/' . $model->preview_path?>"/>
             </div>
-            <div class="col-md-4">
-                <div class="hr-line"></div>
-                <div class="news-sidebar">
-                    <?php foreach ($latestNews as $key => $item){ ?>
-                        <div class="item">
-                            <a href="/news/<?= $item->slug?>">
-                                <div class="img-container">
-                                    <img src="<?=$item->thumbnail_base_url.'/' . $item->thumbnail_path?>" alt="">
-                                </div>
-                                <div class="text">
-                                    <h4><?= $item->getMultilingual('title', YII::$app->language);?></h4>
-                                    <div class="tag light-text">
-                                        <i class="fa fa-tag" aria-hidden="true"></i>
-                                        <span><?= $model->category->getMultilingual('title', YII::$app->language);?></span>
-                                    </div>
-                                    <div class="post-date light-text">
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <span><?php echo Yii::$app->formatter->asDate($item->published_at, "d MMM, y") ?></span>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </a>
-                        </div>
-                    <?php }?>
-                </div>
-            </div>
+            <time><?php echo Yii::$app->formatter->asDate($model->published_at, "d MMM, y HH:MM") ?></time>
+            <h3><?= $model->getMultilingual('title', YII::$app->language)?></h3>
+            <samp><?= nl2br($model->getMultilingual("body", YII::$app->language) )?></samp>
         </div>
+        <br>
+        <br>
         <?php if ( count($model->newsAttachments) != 0 || !empty($model->video_link)):?>
             <div class="item">
                 <div id="gallery" style="display:none;">
                     <?php if (!empty($model->video_link)):?>
                         <img alt="<?= $model->getMultilingual('title', Yii::$app->language)?>"
                              data-type="youtube"
-                             data-videoid="<?= $model->video_link?>"
-                             data-description="<?= $model->getMultilingual('short_description', Yii::$app->language)?>">
+                             data-videoid="<?= $model->video_link?>">
                     <?php endif;?>
                     <?php if (count($model->newsAttachments) != 0):?>
                         <?php foreach ($model->newsAttachments as $attach):?>
@@ -187,7 +162,6 @@ $this->registerJs(
                                  src="<?= $attach->base_url."/".$attach->path?>"
                                  data-image="<?= $attach->base_url."/".$attach->path?>"
                             >
-                            <!--                        data-description="Preview Image 1 Description"-->
                         <?php endforeach;?>
                     <?php endif;?>
                 </div>
@@ -195,29 +169,31 @@ $this->registerJs(
             </div>
         <?php endif; ?>
     </div>
-
-</section>
-<?php if (count($activities) > 0):?>
-    <section class="home-activity white-txt-block grey-bg">
-        <div class="container">
-            <h2><?= Yii::t('frontend','Activity');?></h2>
-            <div class="line"></div>
-            <div class="row">
-                <?php foreach ($activities as $activity):?>
-                    <div class="col-sm-4 col-xs-12">
-                        <a href="<?= '/'.$activity->category->slug . '/' . $activity->slug ?>">
-                            <div class="item item-1">
-                                <div class="black-57">
-                                    <div class="activity-icon-1" style="background: url(<?= $activity->preview_base_url . '/' . $activity->preview_path ?>) no-repeat center; background-size: cover;"></div>
-                                    <h4><?= $activity->getMultilingual('title', Yii::$app->language) ?></h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                <?php endforeach;?>
-
+</div>
+<div id="right_sidebar" class="right-sidebar">
+    <div class="widget widget-search">
+        <h2> <?= Yii::t('frontend', 'Search')?> </h2>
+        <?php if ($searchModel->search == null) { ?>
+            <?php $form = ActiveForm::begin(); ?>
+            <div class="search hidden-sm hidden-xs">
+                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input', 'placeholder' => Yii::t('frontend', 'Search')])->label('')->label(false) ?>
             </div>
-        </div>
-    </section>
+            <?php ActiveForm::end(); ?>
+        <?php } ?>
+    </div>
+    <div class="widget widget-connect-us">
+        <h2><?= Yii::t('frontend', 'Latest News')?>  </h2>
 
-<?php endif;?>
+    </div>
+    <div class="widget widget-connect-us">
+        <h2><?= Yii::t('frontend', 'Connect  with us')?> </h2>
+        <a class="connect" href="<?= Yii::$app->homeUrl?>/contact">
+            <i class="icon-mail"></i>
+            Contact US
+        </a>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+

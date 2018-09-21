@@ -1,26 +1,26 @@
 @font-face {
-    font-family: OpenSans;
-    src: url(../fonts/OpenSans-Regular.ttf);
+	font-family: OpenSans;
+	src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 @font-face {
-    font-family: OpenSansBold;
-    src: url(../fonts/OpenSans-Bold.ttf);
+	font-family: OpenSansBold;
+	src: url(../fonts/OpenSans-Bold.ttf);
 }
 
 @font-face {
-    font-family: OpenSansLight;
-    src: url(../fonts/OpenSans-Light.ttf);
+	font-family: OpenSansLight;
+	src: url(../fonts/OpenSans-Light.ttf);
 }
 
 @font-face {
-    font-family: OpenSansSemiBold;
-    src: url(../fonts/OpenSans-SemiBold.ttf);
+	font-family: OpenSansSemiBold;
+	src: url(../fonts/OpenSans-SemiBold.ttf);
 }
 
-body, 
-h1, h2, h3, h4, h5, h6, 
-ul, ol, 
+body,
+h1, h2, h3, h4, h5, h6,
+ul, ol,
 p {
 	padding: 0;
 	margin: 0;
@@ -28,7 +28,7 @@ p {
 }
 
 body * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 ul,
@@ -48,21 +48,21 @@ img {
 }
 
 input {
-    padding: 10px 5px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #213d5138;
-    color: #213d51;
-    outline-color: #ff9729;
+	padding: 10px 5px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #213d5138;
+	color: #213d51;
+	outline-color: #ff9729;
 }
 
 input:hover {
-    border-color: #213d518c;
+	border-color: #213d518c;
 }
 
 input:active,
 input:focus {
-    border-color: #213d51d1;
+	border-color: #213d51d1;
 }
 
 .clearfix {

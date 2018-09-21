@@ -16,19 +16,19 @@ return [
         //Site
         ['pattern'=>'site/', 'route'=>'site/index'],
         ['pattern'=>'site/search', 'route'=>'site/search'],
-        ['pattern'=>'site/contact', 'route'=>'site/contact'],
-        ['pattern'=>'site/subscription', 'route'=>'site/subscription'],
+        ['pattern'=>'contact', 'route'=>'site/contact'],
+//        ['pattern'=>'site/subscription', 'route'=>'site/subscription'],
         ['pattern'=>'site/set-locale', 'route'=>'site/set-locale'],
         ['pattern'=>'site/captcha', 'route'=>'site/captcha'],
         ['pattern'=>'site/error', 'route'=>'site/error'],
         // Pages
-        ['pattern'=>'page/<slug>', 'route'=>'page/view'],
+//        ['pattern'=>'page/<slug>', 'route'=>'page/view'],
         //Events
         ['pattern'=>'news', 'route'=>'news/index'],
         ['pattern'=>'news/<slug>', 'route'=>'news/view'],
         //News
-        ['pattern'=>'official-message', 'route'=>'official-message/index'],
-        ['pattern'=>'official-message/<slug>', 'route'=>'official-message/view'],
+        ['pattern'=>'official-messages', 'route'=>'official-messages/index'],
+        ['pattern'=>'official-messages/<slug>', 'route'=>'official-messages/view'],
         // Articles
         ['pattern'=>'<category>/<slug>', 'route'=>'article/category-routing'],
         ['pattern'=>'<category>', 'route'=>'article/category-routing'],

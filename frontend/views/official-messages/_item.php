@@ -5,14 +5,11 @@
  */
 use yii\helpers\Html;
 
-
 ?>
 
+
+
 <div id="article_1" class="article">
-    <div class="thumbnail">
-        <?= Html::a('<img src="'. $model->preview_base_url . '/' . $model->preview_path .'"/>', ['view', 'slug' => $model->slug],
-            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
-    </div>
     <time><?= Yii::$app->formatter->asDate($model->published_at, "d MMM, y HH:MM") ?></time>
     <?= Html::a('<h3>' . $model->getMultilingual('title', YII::$app->language) . '</h3>', ['view', 'slug' => $model->slug],
         ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
