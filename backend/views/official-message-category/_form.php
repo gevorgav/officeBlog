@@ -21,10 +21,10 @@ use yii\bootstrap\ActiveForm;
     </ul>
 
     <div class="tab-content">
-        <div id="menu2" class="tab-pane fade">
+        <div id="menu2" class="tab-pane fade in active">
             <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => 512]) ?>
         </div>
-        <div id="home" class="tab-pane fade in active">
+        <div id="home" class="tab-pane fade">
             <?php echo $form->field($model, 'title_en')->textInput(['maxlength' => 512]) ?>
         </div>
         <div id="menu3" class="tab-pane fade">

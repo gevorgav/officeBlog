@@ -1,23 +1,16 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this yii\web\View
+ * @var $upcoming common\models\OfficialMessage
+ */
+$this->title = Yii::$app->name;
 
-
-//------ SEO ------------
 use frontend\models\search\GeneralSearch;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('frontend', 'News');
+?>
 
-$this->registerMetaTag([
-    'name' => 'description',
-    'content' => Yii::t('frontend', 'description'),
-]);
-$this->registerMetaTag([
-    'name' => 'keywords',
-    'content' => Yii::t('frontend', 'keywords'),
-]);
-
+<?php
 //search
 $searchModel = new GeneralSearch();
 if (Yii::$app->getRequest()->getQueryParam('search') != null) {
@@ -27,22 +20,23 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 
 <div id="content" class="content">
     <div class="news-wrap">
-        <?= Html::a('<h2>'.Yii::t('frontend', 'News').'</h2>', ['news/index'],
-            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
-        <?php echo \common\widgets\ListView::widget([
-            'dataProvider' => $dataProvider,
-            'pager' => [
-                'hideOnSinglePage' => true,
-            ],
-            'itemView' => '_item',
-            'summary' => ''
-        ]) ?>
-
+        <h2><?= Yii::t('frontend', 'FAQ-title')?> </h2><br>
+        <div class="thumbnail">
+            <img src="../img/SY_FAQ.png"/>
+        </div>
+        <?php foreach ($modelList as $model): ?>
+            <div id="article_1" class="article">
+                <?= '<h4 style="font-weight: bold; margin: 10px;">'.$model->getMultilingual('title', YII::$app->language).'</h4>'?>
+                <?= $model->getMultilingual("body", YII::$app->language) ?>
+                <br>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
+
 <div id="right_sidebar" class="right-sidebar">
     <div class="widget widget-search">
-        <h2> <?= Yii::t('frontend', 'Search')?>  </h2>
+        <h2> <?= Yii::t('frontend', 'Search')?> </h2>
         <?php if ($searchModel->search == null) { ?>
             <?php $form = ActiveForm::begin(); ?>
             <div class="search hidden-sm hidden-xs">
@@ -63,7 +57,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
         <?php endforeach;?>
     </div>
     <div class="widget widget-connect-us">
-        <h2> <?= Yii::t('frontend', 'Connect  with us')?></h2>
+        <h2><?= Yii::t('frontend', 'Connect  with us')?> </h2>
         <a class="connect" href="<?= Yii::$app->homeUrl?>/contact">
             <i class="icon-mail"></i>
             Contact US

@@ -6,9 +6,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Event */
-/* @var $nextModel common\models\Event */
-/* @var $item common\models\Event */
+/* @var $model common\models\News */
+/* @var $nextModel common\models\News */
+/* @var $item common\models\News */
 /* @var $upcoming [] */
 //------ SEO ------------
 $this->title = $model->getMultilingual('title', YII::$app->language);
@@ -144,7 +144,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
             </div>
             <time><?php echo Yii::$app->formatter->asDate($model->published_at, "d MMM, y HH:MM") ?></time>
             <h3><?= $model->getMultilingual('title', YII::$app->language)?></h3>
-            <samp><?= nl2br($model->getMultilingual("body", YII::$app->language) )?></samp>
+            <p><?= nl2br($model->getMultilingual("body", YII::$app->language) )?></p>
         </div>
         <br>
         <br>
@@ -176,14 +176,20 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
         <?php if ($searchModel->search == null) { ?>
             <?php $form = ActiveForm::begin(); ?>
             <div class="search hidden-sm hidden-xs">
-                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input', 'placeholder' => Yii::t('frontend', 'Search')])->label('')->label(false) ?>
+                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input'])->label('')->label(false) ?>
             </div>
             <?php ActiveForm::end(); ?>
         <?php } ?>
     </div>
     <div class="widget widget-connect-us">
-        <h2><?= Yii::t('frontend', 'Latest News')?>  </h2>
-
+        <h2><?= Html::a(Yii::t('frontend', 'Latest News'), ['news/index'],
+                ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></h2>
+        <?php foreach ($upcoming as $news): ?>
+            <time><?php echo Yii::$app->formatter->asDate($news->published_at, "d MMM, y HH:MM") ?></time>
+            <?= Html::a('<h5>' . $news->getMultilingual('title', YII::$app->language) . '</h5>', ['news/view', 'slug' => $news->slug],
+            ['class' => 'calendar-visit-event']) ?>
+            <br>
+        <?php endforeach;?>
     </div>
     <div class="widget widget-connect-us">
         <h2><?= Yii::t('frontend', 'Connect  with us')?> </h2>

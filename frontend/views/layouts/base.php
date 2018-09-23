@@ -12,9 +12,9 @@ use frontend\models\search\GeneralSearch;
 $this->beginContent('@frontend/views/layouts/_clear.php');
 
 
-if (Yii::$app->getRequest()->getQueryParam('search') != null) {
-    $model->search = Yii::$app->getRequest()->getQueryParam('search');
-}
+//if (Yii::$app->getRequest()->getQueryParam('search') != null) {
+//    $model->search = Yii::$app->getRequest()->getQueryParam('search');
+//}
 
 
 ?>
@@ -24,7 +24,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
                 <a class="logo" href="<?= Yii::$app->homeUrl?>"></a>
                 <a href="<?= Yii::$app->homeUrl?>">
                     <h1 id="site_name" class="site-name">
-                        ԱՐՑԱԽԻ ՀԱՆՐԱՊԵՏՈՒԹՅՈՒՆ ԱԶԳԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅԱՆ ԾԱՌԱՅՈՒԹՅՈՒՆ
+                        <?=Yii::t('frontend', 'ARTSAKH REPUBLIC NATIONAL SECURITY SERVICE')?>
                     </h1>
                 </a>
                 <div class="clearfix"></div>
@@ -42,29 +42,40 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 
     <main id="main" class="main">
         <div id="left_sidebar" class="left-sidebar">
-            <h2><?=Yii::t('frontend', 'Պաշտոնական կայք')?><span id="nav_open_toggle" class="nav-open-toggle" data-open="false"></span> </h2>
+            <h2><?=Yii::t('frontend', 'Official website')?><span id="nav_open_toggle" class="nav-open-toggle" data-open="false"></span> </h2>
             <nav id="left_sidebar_navigation" class="left-sidebar-navigation">
                 <ul>
-                    <li class="has-submenu">
-                        <a href="#structure">Structure</a>
-                        <ul class="sub-menu">
-                            <li><a href="#structure-1">Structure submenu 1</a></li>
-                            <li><a href="#structure-2">Structure submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#necessary-documents">Necessary Documents</a></li>
-                    <li><a href="#procedure">Procedure</a></li>
-                    <li><a href="#applied">Applied Measures</a></li>
-                    <li><a href="#forced">Forced Electronic Auction</a></li>
-                    <li><a href="#legislation">Legislation</a></li>
-                    <li class="current has-submenu">
-                        <a href="#news">News</a>
-                        <ul class="sub-menu">
-                            <li><a href="#submenu-1">News submenu 1</a></li>
-                            <li><a href="#submenu-2">News submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#frequently">Frequently asked questions</a></li>
+<!--                    <li class="has-submenu">-->
+<!--                        <a href="#structure">Structure</a>-->
+<!--                        <ul class="sub-menu">-->
+<!--                            <li><a href="#structure-1">Structure submenu 1</a></li>-->
+<!--                            <li><a href="#structure-2">Structure submenu 2</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                    <li><?= Html::a(Yii::t('frontend', 'Home page'), ['site/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'News'), ['news/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'Official messages'), ['official-messages/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'Legislation'), ['official-messages/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'Leadership'), ['official-messages/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'Structure'), ['official-messages/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'Symbolic'), ['official-messages/index'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'FAQ'), ['/hacax-trvog-harcer'],
+                            ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></li>
+<!--                    <li class="current has-submenu">-->
+<!--                        <a href="#news">News</a>-->
+<!--                        <ul class="sub-menu">-->
+<!--                            <li><a href="#submenu-1">News submenu 1</a></li>-->
+<!--                            <li><a href="#submenu-2">News submenu 2</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
                 </ul>
             </nav>
         </div>
@@ -76,7 +87,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
     <footer id="footer" class="footer">
         <div class="container">
             <div class="widget feedback">
-                <h4>Feedback</h4>
+                <h4><?=Yii::t('frontend', 'Feedback')?></h4>
                 <ul>
                     <li>0010 Yerevan, Vazgen Sargsyan St., 3/8 Building,</li>
                     <li>Tel.+374 10 59-40-94,</li>
@@ -86,7 +97,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
             <div class="widget hot-line-numbers">
                 <h4>Hot line numbers</h4>
                 <ul>
-                    <li><span class="left">Ministry of Justice of Armenia։</span> <span
+                    <li><span class="left"><?=Yii::t('frontend', 'ARTSAKH REPUBLIC NATIONAL SECURITY SERVICE')?>։</span> <span
                                 class="right">(+374) 10 59-41-48</span></li>
                     <li><span class="left">Compulsory Enforcement Service։</span> <span class="right">(+374 ) 10 34-22-29</span>
                     </li>

@@ -23,7 +23,7 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 
 <div id="content" class="content">
     <div class="news-wrap">
-        <h2>News</h2>
+        <h2><?= Yii::t('frontend', 'News')?> </h2>
         <?php foreach ($newsList as $news): ?>
             <div id="article_1" class="article">
                 <div class="thumbnail">
@@ -40,37 +40,48 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
         <div class="all-news clearfix"><?= Html::a(Yii::t('frontend', 'All News'), ['news/index'],
                 ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></div>
     </div>
-    <div class="official-message-warp">
-        <h2>Official message</h2>
-
-        <?php foreach ($officialMessages as $officialMessage): ?>
-            <div id="official_message" class="official-message">
-                <time><?php echo Yii::$app->formatter->asDate($officialMessage->published_at, "d MMM, y HH:MM") ?></time>
-                <?= Html::a('<h3>' . $officialMessage->getMultilingual('title', YII::$app->language) . '</h3>', ['official-messages/view', 'slug' => $officialMessage->slug],
-                    ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
-                <?= Html::a('<p>' . $officialMessage->getMultilingual("short_description", YII::$app->language) . '</p>', ['official-messages/view', 'slug' => $officialMessage->slug],
-                    ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
-            </div>
-        <?php endforeach; ?>
-        <div class="see-all clearfix"><?= Html::a(Yii::t('frontend', 'See All'), ['official-messages/index'],
-                ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?></div>
-    </div>
+<!--    <div class="official-message-warp">-->
+<!--        <h2>Official message</h2>-->
+<!---->
+<!--        --><?php //foreach ($officialMessages as $officialMessage): ?>
+<!--            <div id="official_message" class="official-message">-->
+<!--                <time>--><?php //echo Yii::$app->formatter->asDate($officialMessage->published_at, "d MMM, y HH:MM") ?><!--</time>-->
+<!--                --><?//= Html::a('<h3>' . $officialMessage->getMultilingual('title', YII::$app->language) . '</h3>', ['official-messages/view', 'slug' => $officialMessage->slug],
+//                    ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
+<!--                --><?//= Html::a('<p>' . $officialMessage->getMultilingual("short_description", YII::$app->language) . '</p>', ['official-messages/view', 'slug' => $officialMessage->slug],
+//                    ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?>
+<!--            </div>-->
+<!--        --><?php //endforeach; ?>
+<!--        <div class="see-all clearfix">--><?//= Html::a(Yii::t('frontend', 'See All'), ['official-messages/index'],
+//                ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none']) ?><!--</div>-->
+<!--    </div>-->
 </div>
 
 <div id="right_sidebar" class="right-sidebar">
     <div class="widget widget-search">
-        <h2> Search </h2>
+        <h2> <?= Yii::t('frontend', 'Search')?> </h2>
         <?php if ($searchModel->search == null) { ?>
             <?php $form = ActiveForm::begin(); ?>
             <div class="search hidden-sm hidden-xs">
-                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input', 'placeholder' => Yii::t('frontend', 'Search')])->label('')->label(false) ?>
+                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input'])->label('')->label(false) ?>
             </div>
             <?php ActiveForm::end(); ?>
         <?php } ?>
     </div>
     <div class="widget widget-connect-us">
-        <h2> Connect with us </h2>
-        <a class="connect" href="<?= Yii::$app->homeUrl ?>/contact">
+        <h2><?= Html::a(Yii::t('frontend', 'Latest Messages'), ['official-messages/index'],
+                ['class' => 'calendar-visit-event', 'style' => 'text-decoration: none;']) ?></h2>
+        <br>
+        <?php foreach ($officialMessages as $officialMessage): ?>
+            <time><?php echo Yii::$app->formatter->asDate($officialMessage->published_at, "d MMM, y HH:MM") ?></time>
+            <?= Html::a('<h5>' . $officialMessage->getMultilingual('title', YII::$app->language) . '</h5>', ['official-messages/view', 'slug' => $officialMessage->slug],
+            ['class' => 'calendar-visit-event']) ?>
+            <br>
+        <?php endforeach;?>
+    </div>
+    <div class="widget widget-connect-us">
+        <h2><?= Yii::t('frontend', 'Connect  with us')?> </h2>
+        <a class="connect" href="<?= Yii::$app->homeUrl?>/contact">
             <i class="icon-mail"></i>
             Contact US
         </a>
