@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "webpack --progress",
+    "build": "node init && webpack --progress",
     "watch": "webpack --progress --watch"
   },
   "devDependencies": {

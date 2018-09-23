@@ -52,8 +52,13 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
         <?php } ?>
     </div>
     <div class="widget widget-connect-us">
-        <h2><?= Yii::t('frontend', 'Latest Messages')?>  </h2>
-
+        <h2 style="font-size: 14px;"><?= Yii::t('frontend', 'Latest Messages')?>  </h2>
+        <?php foreach ($latestNews as $news): ?>
+            <time><?php echo Yii::$app->formatter->asDate($news->published_at, "d MMM, y HH:MM") ?></time>
+            <?= Html::a('<h5>' . $news->getMultilingual('title', YII::$app->language) . '</h5>', ['official-messages/view', 'slug' => $news->slug],
+            ['class' => 'calendar-visit-event']) ?>
+            <br>
+        <?php endforeach;?>
     </div>
     <div class="widget widget-connect-us">
         <h2><?= Yii::t('frontend', 'Connect  with us')?> </h2>

@@ -42,17 +42,17 @@ if (Yii::$app->getRequest()->getQueryParam('search') != null) {
 </div>
 <div id="right_sidebar" class="right-sidebar">
     <div class="widget widget-search">
-        <h2> Search </h2>
+        <h2><?= Yii::t('frontend', 'Search')?> </h2>
         <?php if ($searchModel->search == null) { ?>
             <?php $form = ActiveForm::begin(); ?>
             <div class="search hidden-sm hidden-xs">
-                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input', 'placeholder' => Yii::t('frontend', 'Search')])->label('')->label(false) ?>
+                <?= $form->field($searchModel, 'search')->textInput(['class' => 'search-input'])->label('')->label(false) ?>
             </div>
             <?php ActiveForm::end(); ?>
         <?php } ?>
     </div>
     <div class="widget widget-connect-us">
-        <h2> Connect  with us </h2>
+        <h2> <?= Yii::t('frontend', 'Connect  with us')?> </h2>
         <a class="connect" href="<?= Yii::$app->homeUrl?>/contact">
             <i class="icon-mail"></i>
             Contact US

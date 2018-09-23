@@ -16,25 +16,20 @@ use trntv\filekit\widget\Upload;
 
     <h3>Multilingual Inputs</h3>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">English</a></li>
-        <li><a data-toggle="tab" href="#menu1">Հայերեն</a></li>
+        <li class="active"><a data-toggle="tab" href="#menu1">Հայերեն</a></li>
+        <li ><a data-toggle="tab" href="#home">English</a></li>
         <li><a data-toggle="tab" href="#menu2">Русский</a></li>
-        <li><a data-toggle="tab" href="#menu3">Deutsch</a></li>
-        <li><a data-toggle="tab" href="#menu4">Français</a></li>
-        <li><a data-toggle="tab" href="#menu5">Español</a></li>
-        <li><a data-toggle="tab" href="#menu6">العربية</a></li>
-        <li><a data-toggle="tab" href="#menu7">Iranian</a></li>
     </ul>
 
     <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
+        <div id="home" class="tab-pane fade">
             <?php echo $form->field($model, 'title_en')->textInput(['maxlength' => 512]) ?>
             <?php echo $form->field($model, 'description_en')->textInput(['maxlength' => true]) ?>
             <?php echo $form->field($model, 'keywords_en')
                 ->hint('Please enter the keyword with commas')
                 ->textInput(['maxlength' => true]) ?>
         </div>
-        <div id="menu1" class="tab-pane fade">
+        <div id="menu1" class="tab-pane fade in active">
             <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => 512]) ?>
             <?php echo $form->field($model, 'description_hy')->textInput(['maxlength' => true]) ?>
             <?php echo $form->field($model, 'keywords_hy')
@@ -47,41 +42,6 @@ use trntv\filekit\widget\Upload;
             <?php echo $form->field($model, 'keywords_ru')
                 ->hint('Please enter the keyword with commas')
                 ->textInput(['maxlength' => true]) ?>
-        </div>
-        <div id="menu3" class="tab-pane fade">
-            <?php echo $form->field($model, 'title_de')->textInput(['maxlength' => 512]) ?>
-            <?php echo $form->field($model, 'description_de')->textInput(['maxlength' => true]) ?>
-            <?php echo $form->field($model, 'keywords_de')
-                ->hint('Please enter the keyword with commas')
-                ->textInput(['maxlength' => true]) ?>
-        </div>
-        <div id="menu4" class="tab-pane fade">
-            <?php echo $form->field($model, 'title_fr')->textInput(['maxlength' => 512]) ?>
-            <?php echo $form->field($model, 'description_fr')->textInput(['maxlength' => true]) ?>
-            <?php echo $form->field($model, 'keywords_fr')
-                ->hint('Please enter the keyword with commas')
-                ->textInput(['maxlength' => true]) ?>
-        </div>
-        <div id="menu5" class="tab-pane fade">
-            <?php echo $form->field($model, 'title_es')->textInput(['maxlength' => 512]) ?>
-            <?php echo $form->field($model, 'description_es')->textInput(['maxlength' => true]) ?>
-            <?php echo $form->field($model, 'keywords_es')
-                ->hint('Please enter the keyword with commas')
-                ->textInput(['maxlength' => true]) ?>
-        </div>
-        <div id="menu6" class="tab-pane fade">
-            <?php echo $form->field($model, 'title_ar')->textInput(['maxlength' => 512]) ?>
-            <?php echo $form->field($model, 'description_ar')->textInput(['maxlength' => true,'dir'=>'rtl']) ?>
-            <?php echo $form->field($model, 'keywords_ar')
-                ->hint('Please enter the keyword with commas')
-                ->textInput(['maxlength' => true,'dir'=>'rtl']) ?>
-        </div>
-        <div id="menu7" class="tab-pane fade">
-            <?php echo $form->field($model, 'title_fa')->textInput(['maxlength' => 512]) ?>
-            <?php echo $form->field($model, 'description_fa')->textInput(['maxlength' => true,'dir'=>'rtl']) ?>
-            <?php echo $form->field($model, 'keywords_fa')
-                ->hint('Please enter the keyword with commas')
-                ->textInput(['maxlength' => true,'dir'=>'rtl']) ?>
         </div>
     </div>
 

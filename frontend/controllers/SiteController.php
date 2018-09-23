@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\Event;
 use common\models\OfficialMessage;
+use common\models\OfficialMessageCategory;
 use frontend\models\search\GeneralSearch;
 use Yii;
 use frontend\models\ContactForm;
@@ -57,7 +58,10 @@ class SiteController extends Controller
             ->orderBy(['{{%news}}.published_at' => SORT_DESC])
             ->limit(3)
             ->all();
+
+        $category = OfficialMessageCategory::find()->andWhere(['slug' => 'official-message'])->one();
         $officialMessages = OfficialMessage::find()
+            ->andWhere(['{{%official_message}}.category_id' => $category->id])
             ->published()
             ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
             ->limit(3)
@@ -92,40 +96,20 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSubscription()
-    {
-        $model = new \common\models\Subscription();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $email = Html::encode($model->email);
-            $model->email = $email;
-            $model->addtime = (string)time();
-            if ($model->save()) {
-                Yii::$app->response->refresh();
-                echo "<p style='color:green'>" . Yii::t('frontend', 'Subscribed!') . "</p>";
-                exit;
-            }
-        } else {
-            if ($model->errors['email'][0]) {
-                echo "<p style='color:red'>" . $model->errors['email'][0] . "!</p>";
-            }
-        }
-        exit;
-    }
-
     public function actionSearch(){
         $search = Yii::$app->getRequest()->getQueryParam('search');
-        $query = Article::find()->published()->where(['like', 'title_'.Yii::$app->language, $search])->where(['like', 'short_description_'.Yii::$app->language, $search]);
+        $query = News::find()->published()->where(['like', 'title_'.Yii::$app->language, $search])->where(['like', 'body_'.Yii::$app->language, $search]);
         $pagination = new Pagination([
             'defaultPageSize' => 6,
             'totalCount' => $query->count()
         ]);
 
-        $articles = $query->offset($pagination->offset)
+        $newsList = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
         return $this->render('search',[
-            'articles' => $articles,
+            'newsList' => $newsList,
             'search' => $search,
             'pagination' => $pagination
         ]);

@@ -14,6 +14,7 @@ return [
     'rules'=> [
 
         //Site
+        ['pattern'=>'hacax-trvog-harcer', 'route'=>'official-messages/faq'],
         ['pattern'=>'site/', 'route'=>'site/index'],
         ['pattern'=>'site/search', 'route'=>'site/search'],
         ['pattern'=>'contact', 'route'=>'site/contact'],
@@ -28,6 +29,7 @@ return [
         ['pattern'=>'news/<slug>', 'route'=>'news/view'],
         //News
         ['pattern'=>'official-messages', 'route'=>'official-messages/index'],
+        ['pattern'=>'hacax-trvog-harcer', 'route'=>'official-messages/faq'],
         ['pattern'=>'official-messages/<slug>', 'route'=>'official-messages/view'],
         // Articles
         ['pattern'=>'<category>/<slug>', 'route'=>'article/category-routing'],
