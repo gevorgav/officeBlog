@@ -44,3 +44,4 @@ phpunit.phar
 /node_modules
 .evn
 storage/.quarantine/
+config.bat

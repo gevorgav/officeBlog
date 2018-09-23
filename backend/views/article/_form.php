@@ -78,7 +78,7 @@ use mihaildev\ckeditor\CKEditor;
             <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
                 $categories,
                 'id',
-                'title_en'
+                'title_hy'
             ), ['prompt' => '']) ?>
         </div>
     </div>
@@ -88,15 +88,24 @@ use mihaildev\ckeditor\CKEditor;
     <div class="">
         <h3>Multilingual inputs</h3>
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">English</a></li>
+            <li class="active"><a data-toggle="tab" href="#menu2">Հայերեն</a></li>
             <?php if (!$model->isNewRecord): ?>
-                <li><a data-toggle="tab" href="#menu2">Հայերեն</a></li>
+                <li><a data-toggle="tab" href="#home">English</a></li>
                 <li><a data-toggle="tab" href="#menu3">Русский</a></li>
             <?php endIf ?>
         </ul>
 
         <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
+            <div id="menu2" class="tab-pane fade in active">
+                <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => true]) ?>
+                <?php echo $form->field($model, 'short_description_hy')->textInput(['maxlength' => true]) ?>
+                <?php echo $form->field($model, 'body_hy')->textArea(['style' => 'display:none'])->label(false) ?>
+                <?php echo $form->field($model, 'keywords_hy')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
+                <section class="template-text" id="template_hy" lang="hy">
+
+                </section>
+            </div>
+            <div id="home" class="tab-pane fade">
                 <?php echo $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_en')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'body_en')->textArea(['style' => 'display:none'])->label(false) ?>
@@ -104,15 +113,6 @@ use mihaildev\ckeditor\CKEditor;
                     ->hint('Please enter the keyword with commas')
                     ->textInput(['maxlength' => true]) ?>
                 <section class="template-text" id="template_en" lang="en">
-
-                </section>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'short_description_hy')->textInput(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_hy')->textArea(['style' => 'display:none'])->label(false) ?>
-                <?php echo $form->field($model, 'keywords_hy')->hint('Please enter the keyword with commas')->textInput(['maxlength' => true]) ?>
-                <section class="template-text" id="template_hy" lang="hy">
 
                 </section>
             </div>
@@ -330,7 +330,7 @@ use mihaildev\ckeditor\CKEditor;
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
-                                                <p contentEditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices vulputate leo sed malesuada. Donec telltus massa, impe rdiet fermentum massa eu, varius elementum est. Sed blandit ipsum eros, quis vulputate purus malesuada elementum. Vestibulum lacinia nisi vel orci porta, ac dictum ligula aliquet. Aenean in est vulputate, semper leo vel, nean in est vulputate, semper leo vel, aenean in est vulputate, semper leo vel, convallis dui. Aenean metus lectus, volutpat in arcu nec, accumsan molestie nulla. Nullam consectetur sagittis ante vel vestibulum. </p>
+                                                <p style="font-weight: bold" contentEditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices vulputate leo sed malesuada. Donec telltus massa, impe rdiet fermentum massa eu, varius elementum est. Sed blandit ipsum eros, quis vulputate purus malesuada elementum. Vestibulum lacinia nisi vel orci porta, ac dictum ligula aliquet. Aenean in est vulputate, semper leo vel, nean in est vulputate, semper leo vel, aenean in est vulputate, semper leo vel, convallis dui. Aenean metus lectus, volutpat in arcu nec, accumsan molestie nulla. Nullam consectetur sagittis ante vel vestibulum. </p>
                                             </div>
                                         </div>
                                     </div>
@@ -340,7 +340,6 @@ use mihaildev\ckeditor\CKEditor;
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="author-words">
-                                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
                                                     <p contentEditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices vulputate leo sed malesuada. Donec telltus massa, impe rdiet fermentum massa eu, varius elementum est. Sed blandit ipsum eros, quis vulputate purus malesuada elementum. Vestibulum lacinia nisi vel orci.</p>
                                                 </div>
                                             </div>

@@ -13,6 +13,7 @@ class ContactForm extends Model
     public $name;
     public $email;
     public $subject;
+    public $phoneNumber;
     public $body;
     public $verifyCode;
 
@@ -23,7 +24,7 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'body', 'verifyCode'], 'required'],
+            [['name', 'email', 'body', 'verifyCode', 'phoneNumber'], 'required'],
             // We need to sanitize them
             [['name', 'subject', 'body'], 'filter', 'filter' => 'strip_tags'],
             // email has to be a valid email address
@@ -44,7 +45,8 @@ class ContactForm extends Model
             'email' => Yii::t('frontend', 'Email'),
             'subject' => Yii::t('frontend', 'Subject'),
             'body' => Yii::t('frontend', 'Body'),
-            'verifyCode' => Yii::t('frontend', 'Verification Code')
+            'verifyCode' => Yii::t('frontend', 'Verification Code'),
+            'phoneNumber' => Yii::t('frontend', 'Phone Number'),
         ];
     }
 
@@ -60,8 +62,8 @@ class ContactForm extends Model
                 ->setTo($email)
                 ->setFrom(Yii::$app->params['robotEmail'])
                 ->setReplyTo([$this->email => $this->name])
-                ->setSubject('Artsakh Travel Contact Form Email')
-                ->setTextBody($this->body)
+                ->setSubject('Snb Contact Form Email')
+                ->setTextBody($this->body.'<br><h3>'.$this->phoneNumber.'</h3')
                 ->send();
         } else {
             return false;

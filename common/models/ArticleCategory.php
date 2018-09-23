@@ -62,7 +62,7 @@ class ArticleCategory extends ActiveRecord
             TimestampBehavior::className(),
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title_en',
+                'attribute' => 'title_hy',
                 'immutable' => true
             ],
             [

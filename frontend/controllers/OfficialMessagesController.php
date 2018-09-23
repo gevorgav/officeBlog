@@ -14,8 +14,10 @@ use backend\models\search\OfficialMessageSearch;
 use common\models\Article;
 use common\models\News;
 use common\models\OfficialMessage;
+use common\models\OfficialMessageCategory;
 use frontend\models\search\NewsSearch;
 use frontend\models\search\GeneralSearch;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use Yii;
 use yii\web\Controller;
@@ -37,13 +39,19 @@ class OfficialMessagesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new OfficialMessageSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = [
-            'defaultOrder' => ['published_at' => SORT_DESC]
-        ];
-        $dataProvider->pagination->pageSize = 5;
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+        $category = OfficialMessageCategory::find()->andWhere(['slug' => 'official-message'])->one();
+        $query = OfficialMessage::find()->where(['category_id' => $category->id]);
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 5,
+            ],
+            'sort' => [
+                'defaultOrder' => ['created_at' => SORT_DESC]
+            ],
+        ]);
+
+        return $this->render('index', ['dataProvider' => $provider]);
     }
 
     /**
@@ -53,8 +61,11 @@ class OfficialMessagesController extends Controller
      */
     public function actionView($slug)
     {
+        $category = OfficialMessageCategory::find()->andWhere(['slug' => 'official-message'])->one();
+
         $model = OfficialMessage::find()->published()->andWhere(['slug' => $slug])->one();
         $latestNews = OfficialMessage::find()
+            ->andWhere(['{{%official_message}}.category_id' => $category->id])
             ->published()
             ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
             ->limit(3)
@@ -66,5 +77,27 @@ class OfficialMessagesController extends Controller
 
         $viewFile = $model->view ?: 'view';
         return $this->render($viewFile, ['model' => $model, 'latestNews' => $latestNews]);
+    }
+
+    public function actionFaq()
+    {
+        $category = OfficialMessageCategory::find()->andWhere(['slug' => 'official-message'])->one();
+
+        $officialMessages = OfficialMessage::find()
+            ->andWhere(['{{%official_message}}.category_id' => $category->id])
+            ->published()
+            ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
+            ->limit(3)
+            ->all();
+
+        $categoryModel = OfficialMessageCategory::find()->andWhere(['slug' => 'hacax-trvog-harcer'])->one();
+
+        $modelList = OfficialMessage::find()
+            ->andWhere(['{{%official_message}}.category_id' => $categoryModel->id])
+            ->published()
+            ->orderBy(['{{%official_message}}.published_at' => SORT_DESC])
+            ->all();
+
+        return $this->render('faq', ['modelList' => $modelList, 'officialMessages' => $officialMessages]);
     }
 }
