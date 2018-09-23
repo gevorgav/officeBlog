@@ -97,4 +97,13 @@ return [
     'Fishing' => 'Fishing',
     'Flights above Artsakh' => 'Flights above Artsakh',
     'Mountain biking' => 'Mountain biking',
+    'ARTSAKH REPUBLIC NATIONAL SECURITY SERVICE' => 'РЕСПУБЛИКА АРЦАХ СЛУЖБА НАЦИОНАЛЬНОЙ БЕЗОПАСНОСТИ',
+    'Official website' => 'Официальный веб-сайт',
+    'Contact Us' => '',
+    'Your Name' => '',
+    'Your Email' => '',
+    'Your Message' => '',
+    'Send e-mail' => '',
+    'Phone Number' => '',
+    'Your Phone Number' => '',
 ];

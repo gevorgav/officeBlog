@@ -49,7 +49,6 @@ use pudinglabs\tagsinput\TagsinputWidget;
         </div>
     </div>
 
-
     <div class="">
         <h3>Multilingual inputs</h3>
         <ul class="nav nav-tabs">
@@ -63,7 +62,21 @@ use pudinglabs\tagsinput\TagsinputWidget;
             <div id="menu2" class="tab-pane fade in active">
                 <?php echo $form->field($model, 'title_hy')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_hy')->textArea(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_hy')->textArea(['maxlength' => true]) ?>
+                <?php echo $form->field($model, 'body_hy')->widget(
+                    \yii\imperavi\Widget::class,
+                    [
+                        'plugins' => ['fullscreen', 'fontcolor', 'fontsize'],
+                        'options' => [
+                            'minHeight' => 400,
+                            'maxHeight' => 400,
+                            'buttonSource' => true,
+                            'convertDivs' => false,
+                            'removeEmptyTags' => true,
+                            'maxlength' => true,
+                            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/upload-imperavi']),
+                        ],
+                    ]
+                )?>
                 <?php echo $form->field($model, 'keywords_hy')
                     ->hint('Please enter the keyword with commas')
                     ->textInput(['maxlength' => true]) ?>
@@ -72,7 +85,21 @@ use pudinglabs\tagsinput\TagsinputWidget;
             <div id="home" class="tab-pane fade ">
                 <?php echo $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_en')->textArea(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_en')->textArea(['maxlength' => true])?>
+                <?php echo $form->field($model, 'body_en')->widget(
+                    \yii\imperavi\Widget::class,
+                    [
+                        'plugins' => ['fullscreen', 'fontcolor', 'fontsize'],
+                        'options' => [
+                            'minHeight' => 400,
+                            'maxHeight' => 400,
+                            'buttonSource' => true,
+                            'convertDivs' => false,
+                            'removeEmptyTags' => true,
+                            'maxlength' => true,
+                            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/upload-imperavi']),
+                        ],
+                    ]
+                )?>
                 <?php echo $form->field($model, 'keywords_en')
                     ->hint('Please enter the keyword with commas')
                     ->textInput(['maxlength' => true]) ?>
@@ -80,7 +107,21 @@ use pudinglabs\tagsinput\TagsinputWidget;
             <div id="menu3" class="tab-pane fade">
                 <?php echo $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
                 <?php echo $form->field($model, 'short_description_ru')->textArea(['maxlength' => true]) ?>
-                <?php echo $form->field($model, 'body_ru')->textArea(['maxlength' => true])?>
+                <?php echo $form->field($model, 'body_ru')->widget(
+                    \yii\imperavi\Widget::class,
+                    [
+                        'plugins' => ['fullscreen', 'fontcolor', 'fontsize'],
+                        'options' => [
+                            'minHeight' => 400,
+                            'maxHeight' => 400,
+                            'buttonSource' => true,
+                            'convertDivs' => false,
+                            'removeEmptyTags' => true,
+                            'maxlength' => true,
+                            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/upload-imperavi']),
+                        ],
+                    ]
+                )?>
                 <?php echo $form->field($model, 'keywords_ru')
                     ->hint('Please enter the keyword with commas')
                     ->textInput(['maxlength' => true]) ?>
